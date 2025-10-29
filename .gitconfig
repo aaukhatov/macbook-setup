@@ -1,0 +1,28 @@
+[user]
+	name = Artur Aukhatov
+	email = aaukhatov@gmail.com
+
+[color]
+	ui = auto
+	status = auto
+	diff = auto
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[core]
+	editor = vim
+	autocrlf = input
+
+# [pager]
+#	log = diff-highlight | less
+#	show = diff-highlight | less
+#	diff = diff-highlight | less
+
+# [includeIf "gitdir:~/projects/cloudally/"]
+# 	path = .gitconfig-cloudally
+
+# [includeIf "gitdir:~/projects/showroom/"]
+#         path = .gitconfig-showroom
