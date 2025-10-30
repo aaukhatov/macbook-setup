@@ -109,8 +109,20 @@ if [[ -f "./Brewfile" ]] && command -v brew >/dev/null 2>&1; then
   ok "Brewfile installation complete"
 fi
 
-ok "Bootstrap finished"
-
 # Cleanup
 run brew cleanup
 run brew doctor
+
+finish() {
+  printf '\n'
+  printf '%s\n' " ${GREEN}${BOLD} Setup complete — enjoy! 🎉🎉🎉 ${RESET}"
+  printf '%s\n' " ${BLUE}────────────────────────────────────────${RESET}"
+  printf '%s\n' " ${GREEN}  ✅  Your favourite tools installed!${RESET}"
+  printf '%s\n' " ${YELLOW}  • Tip: open a new terminal to load shell changes${RESET}"
+  printf '%s\n' " ${BLUE}────────────────────────────────────────${RESET}"
+  printf '%s\n' " ${GREEN}${BOLD} You're ready to rock 🤘 Time to build something awesome 🚀 ${RESET}"
+  printf '\n'
+}
+
+finish
+exit 0
