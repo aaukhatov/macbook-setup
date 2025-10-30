@@ -47,15 +47,26 @@ info "Starting bootstrap"
 sudo -v
 
 _keep_sudo() {
+  # Accept the PID of the parent process (the main script) so the background
+  # refresher can detect when the script exits. We must ignore sudo errors
+  # (sudo -n returns non-zero when a password is required) so the global
+  # "set -e" doesn't cause the script to exit.
+  local parent_pid="$1"
   while true; do
-    sudo -n true
+    # Refresh sudo timestamp; ignore any errors
+    sudo -n true 2>/dev/null || true
     sleep 60
-    kill -0 "$$" || exit
+    # If the parent process no longer exists, exit the loop
+    if ! kill -0 "${parent_pid}" 2>/dev/null; then
+      exit 0
+    fi
   done
 }
 
-_keep_sudo & SUDO_PID=$!
-trap 'kill "$SUDO_PID" 2>/dev/null || true' EXIT
+# Start background keep-alive passing the script PID so the background job
+# can detect when the main script exits and terminate itself.
+_keep_sudo $$ & SUDO_PID=$!
+trap 'kill "${SUDO_PID}" 2>/dev/null || true' EXIT
 
 run sudo softwareupdate -i -a
 
