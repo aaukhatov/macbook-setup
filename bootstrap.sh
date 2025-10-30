@@ -114,13 +114,22 @@ run brew cleanup
 run brew doctor
 
 finish() {
+  local user_name
+  if user_name=$(id -un 2>/dev/null); then
+    :
+  elif user_name=$(whoami 2>/dev/null); then
+    :
+  else
+    user_name="${USER:-friend}"
+  fi
+
   printf '\n'
-  printf '%s\n' " ${GREEN}${BOLD} Setup complete — enjoy! 🎉🎉🎉 ${RESET}"
+  printf '%s\n' " ${GREEN}${BOLD} Setup complete — enjoy, ${user_name}! 🎉🎉🎉 ${RESET}"
   printf '%s\n' " ${BLUE}────────────────────────────────────────${RESET}"
   printf '%s\n' " ${GREEN}  ✅  Your favourite tools installed!${RESET}"
   printf '%s\n' " ${YELLOW}  • Tip: open a new terminal to load shell changes${RESET}"
   printf '%s\n' " ${BLUE}────────────────────────────────────────${RESET}"
-  printf '%s\n' " ${GREEN}${BOLD} You're ready to rock 🤘 Time to build something awesome 🚀 ${RESET}"
+  printf '%s\n' " ${GREEN}${BOLD} You're ready to rock, 🤘 time to build something awesome 🚀 ${RESET}"
   printf '\n'
 }
 
