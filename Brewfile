@@ -1,7 +1,5 @@
 tap "buo/cask-upgrade"
 tap "hashicorp/tap"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
 tap "qmk/qmk"
