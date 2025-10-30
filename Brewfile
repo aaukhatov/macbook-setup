@@ -54,8 +54,6 @@ brew "tree"
 brew "unbound"
 brew "vim"
 brew "wireshark"
-brew "xpdf"
-brew "youtube-dl"
 brew "zsh-syntax-highlighting"
 
 cask "appcleaner"
