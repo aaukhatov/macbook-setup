@@ -23,7 +23,7 @@ err()   { printf '%s\n' "${RED}${BOLD}ERROR:${RESET} $*" >&2; }
 ok()    { printf '%s\n' "${GREEN}${BOLD}OK:${RESET} $*"; }
 
 run() {
-  info "Running (best-effort): $*"
+  info "Running: $*"
   set +e
   "$@"
   rc=$?
