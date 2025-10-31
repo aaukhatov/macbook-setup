@@ -102,6 +102,7 @@ cask "visual-studio-code"
 cask "vlc"
 cask "zoom"
 
+# Requires Apple ID account
 mas "Amphetamine", id: 937984704
 mas "Bandwidth+", id: 490461369
 mas "CleanMyKeyboard", id: 6468120888
