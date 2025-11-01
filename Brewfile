@@ -57,6 +57,7 @@ brew "unbound"
 brew "vim"
 brew "watchman"
 brew "wireshark"
+brew "zoxide"
 brew "zsh-syntax-highlighting"
 
 cask "appcleaner"
