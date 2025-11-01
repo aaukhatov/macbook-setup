@@ -55,6 +55,7 @@ brew "tmux"
 brew "tree"
 brew "unbound"
 brew "vim"
+brew "watchman"
 brew "wireshark"
 brew "zsh-syntax-highlighting"
 
