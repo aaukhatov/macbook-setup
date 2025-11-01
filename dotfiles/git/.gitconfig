@@ -1,21 +1,49 @@
 [user]
 	name = Artur Aukhatov
 	email = aaukhatov@gmail.com
-
 [color]
 	ui = auto
 	status = auto
 	diff = auto
-
 [color "branch"]
 	current = yellow reverse
 	local = yellow
 	remote = green
-
 [core]
 	editor = vim
 	autocrlf = input
-
+	untrackedCache = true
+	pager = delta
+	preloadIndex = true
+[init]
+  defaultBranch = main
+[commit]
+  verbose = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+[pull]
+  ff = only
+  rebase = true
+[merge]
+  autoStash = true
+[rebase]
+  autoStash = true
+  updateRefs = true
+[interactive]
+  diffFilter = delta --color-only
+[tag]
+	sort = version:refname
+[diff]
+	algorithm = histogram
+[delta]
+  syntax-theme = Nord
+  line-numbers = true
+[advice]
+  addEmptyPathspec = false
+[help]
+	autocorrect = prompt
 # [pager]
 #	log = diff-highlight | less
 #	show = diff-highlight | less
