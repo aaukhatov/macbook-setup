@@ -98,6 +98,9 @@ defaults write com.apple.DiskUtility advanced-image-options -bool true
 # Auto-play videos when opened with QuickTime Player
 defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true
 
+# Disable Spotlight
+sudo mdutil -a -i off
+
 # Kill affected applications
 for app in "Activity Monitor" \
 	"Calendar" \

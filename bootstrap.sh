@@ -91,6 +91,7 @@ run sudo softwareupdate -i -a
 # Install Rosetta only on Apple Silicon (best-effort)
 if [[ "$(uname -m)" == "arm64" ]]; then
   if ! /usr/bin/pgrep -q oahd 2>/dev/null; then
+  	info "Installing Rosetta..."
     run sudo softwareupdate --install-rosetta --agree-to-license
   else
     info "Rosetta already running"
