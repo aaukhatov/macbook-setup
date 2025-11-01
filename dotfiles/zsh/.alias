@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 alias ll="eza --long --git-ignore -b"
 alias la="eza --long -a --git-ignore -b"
 alias grep='grep --color=auto'
