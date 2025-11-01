@@ -1,5 +1,6 @@
-alias ll="eza --long --git-ignore -b"
-alias la="eza --long -a --git-ignore -b"
+alias ls="eza --group-directories-first"
+alias ll="eza -l --git-ignore -b --group-directories-first -l"
+alias la="eza -l -a --git-ignore -b"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
