@@ -19,6 +19,10 @@ set bs=2
 set nocp
 " set colorcolumn=120
 " highlight ColorColumn ctermbg=0 guibg=lightgrey
+set scrolloff=3
+set showmode
+set showcmd
+set ttyfast
 
 " Backspace over
 set backspace+=indent  " autoindent
