@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+alias ll="eza --long --git-ignore -b"
+alias la="eza --long -a --git-ignore -b"
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias c="tr -d '\n' | pbcopy"
+
+alias mvnp="mvn clean package"
+alias mvni="mvn clean install"
+
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+
+alias reloadzsh="source ~/.zshrc"
+alias ip="ipconfig getifaddr en0"
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# Merge PDF files, preserving hyperlinks
+# Usage: `mergepdf input{1,2,3}.pdf`
+alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
+
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# find . -name .gitattributes | map dirname
+alias map="xargs -n1"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
