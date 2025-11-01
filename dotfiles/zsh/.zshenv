@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 export EDITOR='vim';
 
 export HISTSIZE=30000
