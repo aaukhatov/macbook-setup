@@ -143,6 +143,12 @@ fi
 run brew cleanup
 run brew doctor
 
+# OMZ unattended installation
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+	info "Oh My Zsh not found, installing..."
+	run sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
 finish() {
   local user_name
   if user_name=$(id -un 2>/dev/null); then
