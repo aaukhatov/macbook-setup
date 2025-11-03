@@ -59,9 +59,7 @@ ZSH_THEME=""
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting extract copyfile copybuffer macos)
+plugins=(git zsh-syntax-highlighting extract copyfile copybuffer macos fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -92,9 +90,8 @@ bindkey '^n' history-search-forward
 
 # Completion style
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-# Install https://github.com/Aloxaf/fzf-tab
-# zstyle ':completion:*' menu no
-# zstyle ':completion:cd:*' fzf-preview 'eza $realpath'
+zstyle ':completion:*' menu no
+zstyle ':completion:cd:*' fzf-preview 'eza $realpath'
 
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
