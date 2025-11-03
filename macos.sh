@@ -6,18 +6,8 @@ osascript -e 'tell application "System Preferences" to quit'
 
 sudo -v
 
-_keep_sudo() {
-  local parent_pid="$1"
-  while true; do
-    # Refresh sudo timestamp; ignore any errors
-    sudo -n true 2>/dev/null || true
-    sleep 60
-    # If the parent process no longer exists, exit the loop
-    if ! kill -0 "${parent_pid}" 2>/dev/null; then
-      exit 0
-    fi
-  done
-}
+# import functions
+source ./utils.sh
 
 _keep_sudo $$ & SUDO_PID=$!
 trap 'kill "${SUDO_PID}" 2>/dev/null || true' EXIT
