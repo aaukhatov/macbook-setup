@@ -149,6 +149,11 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
 	run sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
+if [[ ! -d "$HOME/.sdkman" ]]; then
+	info "Installing SDKMAN..."
+	run curl -s "https://get.sdkman.io" | bash
+fi
+
 finish() {
   local user_name
   if user_name=$(id -un 2>/dev/null); then
