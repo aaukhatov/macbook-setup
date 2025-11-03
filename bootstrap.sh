@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-set -o vi
 # temporarily disable errexit, run best-effort command, check result, restore errexit
 # set +e
 IFS=$'\n\t'
