@@ -84,7 +84,6 @@ defaults write com.apple.screencapture type -string "png"
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
-
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
@@ -100,6 +99,10 @@ defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true
 
 # Disable Spotlight
 sudo mdutil -a -i off
+
+# Apply Keyboard shortcuts
+defaults import com.apple.symbolichotkeys ./macos.d/keyboard-bindings.xml
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
 # Kill affected applications
 for app in "Activity Monitor" \
