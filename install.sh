@@ -63,7 +63,9 @@ download_github_repo() {
 GH_USER="aaukhatov"
 GH_REPO="macbook-setup"
 
-download_github_repo ${GH_USER}/${GH_REPO} "${SCRIPT_DIR}/${GH_REPO}"
+TARGET_DIR="${SCRIPT_DIR}/${GH_REPO}"
+
+download_github_repo ${GH_USER}/${GH_REPO} "${TARGET_DIR}"
 
 # source the bundled bootstrap via script-relative path
-source "${SCRIPT_DIR}/bootstrap.sh"
+source "${TARGET_DIR}/bootstrap.sh"
