@@ -93,9 +93,7 @@ download_github_repo() {
   tmp_dir="$(mktemp -d)"
   zip_path="${tmp_dir}/repo.zip"
 
-  info "[*] Directories temp: $tmp_dir, target: $target_dir"
-
-#  trap rm -rf "$tmp_dir" EXIT
+  trap rm -rf "$tmp_dir" EXIT
 
   info "[*] Downloading GitHub repo: ${repo}"
 
@@ -120,5 +118,5 @@ download_github_repo() {
   info "[*] Moving into $target_dir"
   mv "$extracted_dir" "$target_dir"
 
-  ok "✅ Download complete: $target_dir"
+  info "[*] Download complete: $target_dir"
 }
