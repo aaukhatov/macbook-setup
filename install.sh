@@ -5,14 +5,15 @@ set -euo pipefail
 # If not running under bash (e.g. invoked via sh -c "..."), re-exec under bash reading stdin.
 if [ -z "${BASH_VERSION-}" ]; then
   if command -v bash >/dev/null 2>&1; then
-    exec bash -s -- "$@"
+    exec bash "$0" "$@"
   else
     echo "bash is required to run this installer." >&2
     exit 1
   fi
 fi
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_PATH="${BASH_SOURCE[0]:-$0}"
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
 
 download_github_repo() {
   local repo="$1"
