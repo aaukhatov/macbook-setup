@@ -93,6 +93,8 @@ download_github_repo() {
   tmp_dir="$(mktemp -d)"
   zip_path="${tmp_dir}/repo.zip"
 
+  info "[*] Directory: $tmp_dir"
+
 #  trap rm -rf "$tmp_dir" EXIT
 
   info "[*] Downloading GitHub repo: ${repo}"
