@@ -86,8 +86,12 @@ fi
 
 # OMZ unattended installation
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-	info "Oh My Zsh not found, installing..."
-	run sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+	if ask "Do you want to install Oh My Zsh?"; then
+		info "Oh My Zsh not found, installing..."
+		run sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+	else
+		info "Skipping Oh My Zsh installation"
+	fi
 fi
 
 if [[ ! -d "$HOME/.sdkman" ]]; then
