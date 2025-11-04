@@ -8,6 +8,10 @@ IFS=$'\n\t'
 # import functions
 source ./utils.sh
 
+info "Starting bootstrap"
+
+sudo -v
+
 # Start background keep-alive passing the script PID so the background job
 # can detect when the main script exits and terminate itself.
 _keep_sudo $$ & SUDO_PID=$!
