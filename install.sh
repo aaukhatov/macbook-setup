@@ -14,10 +14,9 @@ fi
 
 REPO_HEAD="https://raw.githubusercontent.com/aaukhatov/macbook-setup/main"
 UTILS_PATH="$REPO_HEAD/utils.sh"
-DEST_DIR="${HOME}/.tmp/macbook-setup"
+DEST_DIR="$(mktemp -d)"
 DEST_FILE="$DEST_DIR/utils.sh"
 
-mkdir -p "$DEST_DIR"
 curl -fsSL "$UTILS_PATH" -o "$DEST_FILE" || { echo "Failed to download utils.sh"; exit 1; }
 
 # Make file readable and keep permissions sane
@@ -28,4 +27,4 @@ chmod 644 "$DEST_FILE"
 # shellcheck disable=SC1090
 source "$DEST_FILE"
 
-download_github_repo aaukhatov macbook-setup .
+download_github_repo aaukhatov/macbook-setup .
