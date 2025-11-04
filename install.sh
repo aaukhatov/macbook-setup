@@ -12,19 +12,53 @@ if [ -z "${BASH_VERSION-}" ]; then
   fi
 fi
 
-REPO_HEAD="https://raw.githubusercontent.com/aaukhatov/macbook-setup/HEAD"
-UTILS_PATH="$REPO_HEAD/utils.sh"
-DEST_DIR="$(mktemp -d)"
-DEST_FILE="$DEST_DIR/utils.sh"
+download_github_repo() {
+  local repo="$1"
+  local target_dir="$2"
 
-curl -fsSL "$UTILS_PATH" -o "$DEST_FILE" || { echo "Failed to download utils.sh"; exit 1; }
+  if [[ -z "$repo" || -z "$target_dir" ]]; then
+    echo "Usage: download_github_repo <user>/<repo> <target_dir>" >&2
+    return 1
+  fi
 
-# Make file readable and keep permissions sane
-chmod 644 "$DEST_FILE"
+  local gh_user repo url_main url_master tmp_dir zip_path extracted_dir
 
-# Source it now so download_github_repo is available in this session
-# (use a subshell-safe source)
-# shellcheck disable=SC1090
-source "$DEST_FILE"
+  gh_user="${repo%%/*}"
+  repo="${repo##*/}"
 
-download_github_repo aaukhatov/macbook-setup "$(pwd)/macbook-setup"
+  url_main="https://github.com/${gh_user}/${repo}/archive/refs/heads/main.zip"
+  url_master="https://github.com/${gh_user}/${repo}/archive/refs/heads/master.zip"
+
+  tmp_dir="$(mktemp -d)"
+  zip_path="${tmp_dir}/repo.zip"
+
+  echo "==>[*] Downloading GitHub repo: ${repo}"
+
+  # Try main.zip first, fallback to master.zip
+  if ! curl -L --fail --silent --show-error "$url_main" -o "$zip_path"; then
+    echo "==>[!] main.zip not found, trying master..."
+    if ! curl -L --fail --silent --show-error "$url_master" -o "$zip_path"; then
+      echo "❌ Could not download archive from GitHub (tried main and master)." >&2
+      return 1
+    fi
+  fi
+
+  echo "==>[*] Unzipping archive..."
+  unzip -q "$zip_path" -d "$tmp_dir"
+
+  extracted_dir="$(find "$tmp_dir" -mindepth 1 -maxdepth 1 -type d | head -n1)"
+  if [[ -z "$extracted_dir" || ! -d "$extracted_dir" ]]; then
+    err "❌ Could not find extracted directory." >&2
+    return 1
+  fi
+
+  echo "==>[*] Moving into $target_dir"
+  mv "$extracted_dir" "$target_dir"
+	rm -rf "$tmp_dir"
+  echo "==>[*] Download complete: $target_dir"
+}
+
+GH_USER="aaukhatov"
+GH_REPO="macbook-setup"
+
+download_github_repo $GH_USER/$GH_REPO "$(pwd)/$GH_REPO"
