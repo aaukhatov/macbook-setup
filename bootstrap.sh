@@ -13,24 +13,6 @@ source ./utils.sh
 _keep_sudo $$ & SUDO_PID=$!
 trap 'kill "${SUDO_PID}" 2>/dev/null || true' EXIT
 
-# Show language menu in the top right corner of the boot screen
-sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
-
-# Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "Europe/Amsterdam" > /dev/null
-
-# Enable lid wakeup
-sudo pmset -a lidwake 1
-
-# Restart automatically on power loss
-sudo pmset -a autorestart 1
-
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
-
-# Sleep the display after 15 minutes
-sudo pmset -a displaysleep 15
-
 run sudo softwareupdate -i -a
 
 # Install Rosetta only on Apple Silicon (best-effort)
