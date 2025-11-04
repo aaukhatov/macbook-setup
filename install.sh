@@ -12,7 +12,7 @@ if [ -z "${BASH_VERSION-}" ]; then
   fi
 fi
 
-REPO_HEAD="https://raw.githubusercontent.com/aaukhatov/macbook-setup/main"
+REPO_HEAD="https://raw.githubusercontent.com/aaukhatov/macbook-setup/HEAD"
 UTILS_PATH="$REPO_HEAD/utils.sh"
 DEST_DIR="$(mktemp -d)"
 DEST_FILE="$DEST_DIR/utils.sh"
