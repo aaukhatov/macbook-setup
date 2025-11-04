@@ -92,8 +92,12 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
 fi
 
 if [[ ! -d "$HOME/.sdkman" ]]; then
-	info "Installing SDKMAN..."
-	run curl -s "https://get.sdkman.io" | bash
+	if ask "Do you want to install SDKMAN?"; then
+		info "Installing SDKMAN..."
+		run curl -s "https://get.sdkman.io" | bash
+	else
+		info "Skipping SDKMAN installation"
+	fi
 fi
 
 finish
