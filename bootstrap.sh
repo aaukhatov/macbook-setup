@@ -17,7 +17,9 @@ sudo -v
 _keep_sudo $$ & SUDO_PID=$!
 trap 'kill "${SUDO_PID}" 2>/dev/null || true' EXIT
 
-run sudo softwareupdate -i -a
+if ask "Do you want to update macOS (it might take time to download and install)?"; then
+	run sudo softwareupdate -i -a
+fi
 
 # Install Rosetta only on Apple Silicon (best-effort)
 if [[ "$(uname -m)" == "arm64" ]]; then
