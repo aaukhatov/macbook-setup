@@ -27,4 +27,4 @@ chmod 644 "$DEST_FILE"
 # shellcheck disable=SC1090
 source "$DEST_FILE"
 
-download_github_repo aaukhatov/macbook-setup .
+download_github_repo aaukhatov/macbook-setup "$(pwd)"
