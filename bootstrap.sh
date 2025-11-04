@@ -8,7 +8,7 @@ IFS=$'\n\t'
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${SCRIPT_DIR}/utils.sh"
 
-info "Starting bootstrap"
+info "Starting macOS setup..."
 
 sudo -v
 
