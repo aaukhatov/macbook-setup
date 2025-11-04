@@ -55,7 +55,7 @@ else
   info "Homebrew present"
 fi
 
-# Homebrew housekeeping (best-effort)
+# if homebrew is there, continue packages installation
 if command -v brew >/dev/null 2>&1; then
   run brew update
   run brew upgrade
