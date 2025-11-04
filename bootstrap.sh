@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-# temporarily disable errexit, run best-effort command, check result, restore errexit
-# set +e
+
 IFS=$'\n\t'
 
 # import functions
