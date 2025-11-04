@@ -53,7 +53,7 @@ download_github_repo() {
   fi
 
   echo "==>[*] Moving into $target_dir"
-  mv "$extracted_dir" "$target_dir"
+  cp -r "$extracted_dir" "$target_dir"
 	rm -rf "$tmp_dir"
   echo "==>[*] Download complete: $target_dir"
 }
@@ -61,9 +61,7 @@ download_github_repo() {
 GH_USER="aaukhatov"
 GH_REPO="macbook-setup"
 
-download_github_repo $GH_USER/$GH_REPO "$(pwd)/$GH_REPO"
-
-cd $GH_REPO
+download_github_repo $GH_USER/$GH_REPO "$(pwd)"
 
 # Basically the installation itself
 source ./boostrap.sh
