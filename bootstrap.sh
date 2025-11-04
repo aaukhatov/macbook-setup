@@ -71,6 +71,16 @@ if [[ -f "./Brewfile" ]] && command -v brew >/dev/null 2>&1; then
   ok "Brewfile installation complete"
 fi
 
+if [[ -f "./AppStore" ]] && command -v brew >/dev/null 2>&1; then
+  if ask "Do you want to install packages from the AppStore?"; then
+    info "Installing packages from ./AppStore..."
+    run brew bundle --file=./AppStore
+    ok "AppStore installation complete"
+  else
+    warn "Skipping AppStore installation"
+  fi
+fi
+
 # Cleanup
 run brew cleanup
 run brew doctor

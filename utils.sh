@@ -30,6 +30,20 @@ run() {
   return 0
 }
 
+ask() {
+  local prompt="$1"
+  local answer
+
+  while true; do
+    read -r -p "$prompt (y/n): " answer
+    case "$answer" in
+      [Yy]*) return 0 ;;  # yes → success
+      [Nn]*) return 1 ;;  # no  → failure
+      *) echo "Please answer y or n." ;;
+    esac
+  done
+}
+
 # Ensure macOS
 if [[ "$(uname -s)" != "Darwin" ]]; then
   err "This script is macOS-only."
