@@ -61,29 +61,29 @@ if command -v brew >/dev/null 2>&1; then
   run brew upgrade
   run brew cleanup
   run brew doctor
+
+  if [[ -f "./Brewfile" ]] && command -v brew >/dev/null 2>&1; then
+    info "Installing packages from ./Brewfile..."
+    run brew bundle --file=./Brewfile
+    ok "Brewfile installation complete"
+  fi
+
+  if [[ -f "./AppStore" ]] && command -v brew >/dev/null 2>&1; then
+    if ask "Do you want to install packages from the AppStore?"; then
+      info "Installing packages from ./AppStore..."
+      run brew bundle --file=./AppStore
+      ok "AppStore installation complete"
+    else
+      info "Skipping AppStore installation"
+    fi
+  fi
+
+  # Cleanup
+  run brew cleanup
+  run brew doctor
 else
   warn "brew not available for housekeeping"
 fi
-
-if [[ -f "./Brewfile" ]] && command -v brew >/dev/null 2>&1; then
-  info "Installing packages from ./Brewfile..."
-  run brew bundle --file=./Brewfile
-  ok "Brewfile installation complete"
-fi
-
-if [[ -f "./AppStore" ]] && command -v brew >/dev/null 2>&1; then
-  if ask "Do you want to install packages from the AppStore?"; then
-    info "Installing packages from ./AppStore..."
-    run brew bundle --file=./AppStore
-    ok "AppStore installation complete"
-  else
-    info "Skipping AppStore installation"
-  fi
-fi
-
-# Cleanup
-run brew cleanup
-run brew doctor
 
 # OMZ unattended installation
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
