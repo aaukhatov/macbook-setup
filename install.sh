@@ -12,6 +12,8 @@ if [ -z "${BASH_VERSION-}" ]; then
   fi
 fi
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 download_github_repo() {
   local repo="$1"
   local target_dir="$2"
@@ -53,7 +55,7 @@ download_github_repo() {
   fi
 
   echo "==>[*] Moving into $target_dir"
-  cp -r "$extracted_dir" "$target_dir"
+  cp -a "$extracted_dir/." "$target_dir"
 	rm -rf "$tmp_dir"
   echo "==>[*] Download complete: $target_dir"
 }
@@ -61,7 +63,7 @@ download_github_repo() {
 GH_USER="aaukhatov"
 GH_REPO="macbook-setup"
 
-download_github_repo $GH_USER/$GH_REPO "$(pwd)"
+download_github_repo $GH_USER/$GH_REPO "${SCRIPT_DIR}"
 
-# Basically the installation itself
-source ./boostrap.sh
+# source the bundled bootstrap via script-relative path
+source "${SCRIPT_DIR}/bootstrap.sh"
