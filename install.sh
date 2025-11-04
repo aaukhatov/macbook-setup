@@ -55,7 +55,7 @@ download_github_repo() {
   fi
 
   echo "==>[*] Moving into $target_dir"
-  cp -r "$extracted_dir" "$target_dir"
+  cp -a "$extracted_dir/." "$target_dir"
 	rm -rf "$tmp_dir"
   echo "==>[*] Download complete: $target_dir"
 }
@@ -63,7 +63,7 @@ download_github_repo() {
 GH_USER="aaukhatov"
 GH_REPO="macbook-setup"
 
-download_github_repo $GH_USER/$GH_REPO "${SCRIPT_DIR}"
+download_github_repo ${GH_USER}/${GH_REPO} "${SCRIPT_DIR}/${GH_REPO}"
 
 # source the bundled bootstrap via script-relative path
 source "${SCRIPT_DIR}/bootstrap.sh"
