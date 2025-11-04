@@ -77,7 +77,7 @@ if [[ -f "./AppStore" ]] && command -v brew >/dev/null 2>&1; then
     run brew bundle --file=./AppStore
     ok "AppStore installation complete"
   else
-    warn "Skipping AppStore installation"
+    info "Skipping AppStore installation"
   fi
 fi
 
