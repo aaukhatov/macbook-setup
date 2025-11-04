@@ -62,3 +62,8 @@ GH_USER="aaukhatov"
 GH_REPO="macbook-setup"
 
 download_github_repo $GH_USER/$GH_REPO "$(pwd)/$GH_REPO"
+
+cd $GH_REPO
+
+# Basically the installation itself
+source ./boostrap.sh
