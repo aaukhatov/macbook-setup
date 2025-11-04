@@ -117,11 +117,6 @@ download_github_repo() {
     return 1
   fi
 
-  if [[ -e "$target_dir" ]]; then
-    err "❌ Target path '$target_dir' already exists." >&2
-    return 1
-  fi
-
   info "[*] Moving into $target_dir"
   mv "$extracted_dir" "$target_dir"
 
