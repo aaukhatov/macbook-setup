@@ -7,7 +7,8 @@ osascript -e 'tell application "System Preferences" to quit'
 sudo -v
 
 # import functions
-source ./utils.sh
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/utils.sh"
 
 _keep_sudo $$ & SUDO_PID=$!
 trap 'kill "${SUDO_PID}" 2>/dev/null || true' EXIT
