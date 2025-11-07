@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 dotfiles() {
-	local target_dotfiles_dir
 	local repo_url="https://github.com/aaukhatov/macbook-setup.git"
   local repo_name
 
@@ -12,6 +11,7 @@ dotfiles() {
 
   repo_name=$(basename -s .git "$repo_url")
 
+	local target_dotfiles_dir
 	read -r -p "Provide an absolute path where you want to clone: " target_dotfiles_dir
 
 	if [[ ! -d "$target_dotfiles_dir" ]]; then
