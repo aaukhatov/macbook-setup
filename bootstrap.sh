@@ -106,7 +106,7 @@ if [[ ! -d "$HOME/.sdkman" ]]; then
 fi
 
 if ask "Do you want to setup .dotfiles?"; then
-	source ./dotfiles.sh
+	source "${SCRIPT_DIR}/dotfiles.sh"
 	dotfiles
 else
 	info "Skipping .dotfiles setup. You can complete this part later."
