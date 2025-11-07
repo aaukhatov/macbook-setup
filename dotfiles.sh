@@ -22,5 +22,5 @@ dotfiles() {
 
 	run git clone "$repo_url" "${clone_dir}"
 
-	info "Run 'stow' manually to apply .dotfiles from $clone_dir"
+	info "Run 'stow' manually to apply .dotfiles from $clone_dir/dotfiles"
 }
