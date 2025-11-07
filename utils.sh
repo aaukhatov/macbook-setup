@@ -12,9 +12,9 @@ else
 fi
 
 info()  { printf '%s\n' "${BLUE}${BOLD}==>${RESET} $*"; }
-warn()  { printf '%s\n' "${YELLOW}${BOLD}WARN:${RESET} $*"; }
-err()   { printf '%s\n' "${RED}${BOLD}ERROR:${RESET} $*" >&2; }
-ok()    { printf '%s\n' "${GREEN}${BOLD}OK:${RESET} $*"; }
+warn()  { printf '%s\n' "${YELLOW}${BOLD}==>[!]${RESET} $*"; }
+err()   { printf '%s\n' "${RED}${BOLD}==>[✗]${RESET} $*" >&2; }
+ok()    { printf '%s\n' "${GREEN}${BOLD}==>[✓]${RESET} $*"; }
 
 run() {
   info "Running: $*"
