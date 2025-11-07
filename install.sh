@@ -41,7 +41,7 @@ download_github_repo() {
   if ! curl -L --fail --silent --show-error "$url_main" -o "$zip_path"; then
     echo "==>[!] main.zip not found, trying master..."
     if ! curl -L --fail --silent --show-error "$url_master" -o "$zip_path"; then
-      echo "❌ Could not download archive from GitHub (tried main and master)." >&2
+      echo "==>[✗] Could not download archive from GitHub (tried main and master)." >&2
       return 1
     fi
   fi
@@ -51,7 +51,7 @@ download_github_repo() {
 
   extracted_dir="$(find "$tmp_dir" -mindepth 1 -maxdepth 1 -type d | head -n1)"
   if [[ -z "$extracted_dir" || ! -d "$extracted_dir" ]]; then
-    err "❌ Could not find extracted directory." >&2
+    err "==>[✗] Could not find extracted directory." >&2
     return 1
   fi
 
@@ -65,6 +65,18 @@ GH_USER="aaukhatov"
 GH_REPO="macbook-setup"
 
 TARGET_DIR="${SCRIPT_DIR}/${GH_REPO}"
+
+if [[ -d "${TARGET_DIR}" ]]; then
+	echo "==>[!]️ Existing directory found at ${TARGET_DIR}"
+	read -r -p "Do you want to remove it before re-installing? [y/N]: " confirm
+	if [[ "${confirm}" =~ ^[Yy]$ ]]; then
+		echo "==>[*] Removing existing directory..."
+		rm -rf "${TARGET_DIR}"
+	else
+		echo "==>[✗] Installation aborted."
+		exit 1
+	fi
+fi
 
 download_github_repo ${GH_USER}/${GH_REPO} "${TARGET_DIR}"
 
