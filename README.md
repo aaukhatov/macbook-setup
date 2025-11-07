@@ -1,7 +1,25 @@
 # Arturito's MacBook Setup 🐒
 
-Automates a full macOS developer setup — installing essential CLI tools, Homebrew packages, and linking personalized
+Automates a full macOS developer setup - installing essential CLI tools, Homebrew packages, and linking personalized
 dotfiles via GNU Stow. Keeps your macOS environment consistent across machines.
+
+```
+macbook-setup/
+├── bootstrap.sh        # Main entry script
+├── utils.sh            # Shared functions
+├── install.sh          # Installer script
+├── brew/
+│   ├── Brewfile        # Homebrew packages (formulas, casks, taps)
+│   ├── AppStore        # macOS App Store apps managed via `mas`
+│   └── VSCodeExtension # VS Code extensions managed via `code` CLI
+├── dotfiles.sh         # Helper to clone and link dotfiles using stow
+├── dotfiles/           # Directory with stow-managed configuration packages
+│   ├── zsh/            # .zshrc, .zshenv, .zshprofile
+│   ├── git/            # .gitconfig, .gitignore
+│   ├── vim/            # .vimrc and related files
+│   └── config/         # Misc app configs
+└── README.md           # Project documentation (you are here)
+```
 
 ## Installation
 
