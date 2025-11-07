@@ -63,16 +63,16 @@ if command -v brew >/dev/null 2>&1; then
   run brew cleanup
   run brew doctor
 
-  if [[ -f "./Brewfile" ]] && command -v brew >/dev/null 2>&1; then
+  if [[ -f "$SCRIPT_DIR/Brewfile" ]] && command -v brew >/dev/null 2>&1; then
     info "Installing packages from ./Brewfile..."
-    run brew bundle --file=./Brewfile
+    run brew bundle --file="$SCRIPT_DIR/Brewfile" --verbose
     ok "Brewfile installation complete"
   fi
 
-  if [[ -f "./AppStore" ]] && command -v brew >/dev/null 2>&1; then
+  if [[ -f "$SCRIPT_DIR./AppStore" ]] && command -v brew >/dev/null 2>&1; then
     if ask "Do you want to install packages from the AppStore?"; then
       info "Installing packages from ./AppStore..."
-      run brew bundle --file=./AppStore
+      run brew bundle --file="$SCRIPT_DIR./AppStore" --verbose
       ok "AppStore installation complete"
     else
       info "Skipping AppStore installation"
@@ -85,6 +85,12 @@ if command -v brew >/dev/null 2>&1; then
 else
   warn "brew not available for housekeeping"
 fi
+
+if command -v brew >/dev/null 2>&1 && [[ -f "$SCRIPT_DIR/Brewfile" ]]; then
+  info "Verifying Brewfile..."
+  brew bundle check --file="$SCRIPT_DIR/Brewfile" || warn "Some packages are still not installed. Re-run after fixing prerequisites."
+fi
+
 
 # OMZ unattended installation
 ZSH_HOME="$HOME/.oh-my-zsh"
