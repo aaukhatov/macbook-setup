@@ -1,5 +1,8 @@
 # Arturito's MacBook Setup 🐒
 
+Automates a full macOS developer setup — installing essential CLI tools, Homebrew packages, and linking personalized
+dotfiles via GNU Stow. Keeps your macOS environment consistent across machines.
+
 ## Installation
 
 Run following command in your terminal
@@ -8,10 +11,12 @@ Run following command in your terminal
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/aaukhatov/macbook-setup/HEAD/install.sh)"
 ```
 
+> **Tip:** Review the script before running — install.sh￼ is short and readable.
+
 ## .dotfiles
 
-Dotfiles are managed by `stow`. You should install `stow` packages manually. Commands below must be run from dotfiles
-directory.
+Dotfiles are organized as `stow` packages.
+Each folder under `dotfiles/ (e.g., zsh, git, vim)` contains the files that will be symlinked into `$HOME`.
 
 ### dry run first (highly recommended)
 
