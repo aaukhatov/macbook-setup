@@ -22,5 +22,8 @@ dotfiles() {
 
 	run git clone "$repo_url" "${clone_dir}"
 
-	info "Run 'stow' manually to apply .dotfiles from $clone_dir/dotfiles"
+	info "Dotfiles cloned to ${clone_dir}/dotfiles"
+	info "Next steps to activate them:"
+  info "  	cd ${clone_dir}/dotfiles"
+  info "  	stow -v -t \"\$HOME\" zsh git vim config"
 }
