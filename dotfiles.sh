@@ -22,8 +22,8 @@ dotfiles() {
 
 	run git clone "$repo_url" "${clone_dir}"
 
-	info "Dotfiles cloned to ${clone_dir}/dotfiles"
-	info "Next steps to activate them:"
-  info "  	cd ${clone_dir}/dotfiles"
-  info "  	stow -v -t \"\$HOME\" zsh git vim config"
+	ok "Dotfiles cloned to ${clone_dir}/dotfiles"
+	info "${GREEN}${BOLD}Next steps to activate them:${RESET}"
+  info "  	${GREEN}${BOLD}cd ${clone_dir}/dotfiles${RESET}"
+  info "  	${GREEN}${BOLD}stow -v -t \"\$HOME\" zsh git vim config${RESET}"
 }
