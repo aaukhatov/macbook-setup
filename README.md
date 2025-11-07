@@ -10,7 +10,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/aaukhatov/macbook-setup/HE
 
 ## .dotfiles
 
-Dotfiles are managed by `stow`. Commands below must be run from dotfiles directory.
+Dotfiles are managed by `stow`. You should install `stow` packages manually. Commands below must be run from dotfiles
+directory.
 
 ### dry run first (highly recommended)
 
