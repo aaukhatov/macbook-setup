@@ -99,7 +99,7 @@ fi
 if [[ ! -d "$HOME/.sdkman" ]]; then
 	if ask "Do you want to install SDKMAN?"; then
 		info "Installing SDKMAN..."
-		run curl -s "https://get.sdkman.io" | bash
+		curl -s "https://get.sdkman.io" | bash
 	else
 		info "Skipping SDKMAN installation"
 	fi
