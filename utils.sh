@@ -35,7 +35,7 @@ ask() {
   local answer
 
   while true; do
-    read -r -p "$prompt (y/n): " answer
+    read -r -p "$prompt [y/N]: " answer
     case "$answer" in
       [Yy]*) return 0 ;;  # yes → success
       [Nn]*) return 1 ;;  # no  → failure
