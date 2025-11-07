@@ -57,22 +57,23 @@ else
 fi
 
 # if homebrew is there, continue packages installation
+BREW_PKG_DIR="$SCRIPT_DIR/brew"
 if command -v brew >/dev/null 2>&1; then
   run brew update
   run brew upgrade
   run brew cleanup
   run brew doctor
 
-  if [[ -f "$SCRIPT_DIR/Brewfile" ]] && command -v brew >/dev/null 2>&1; then
-    info "Installing packages from ./Brewfile..."
-    run brew bundle --file="$SCRIPT_DIR/Brewfile" --verbose
+  if [[ -f "$BREW_PKG_DIR/Brewfile" ]] && command -v brew >/dev/null 2>&1; then
+    info "Installing packages from $BREW_PKG_DIR/Brewfile..."
+    run brew bundle --file="$BREW_PKG_DIR/Brewfile" --verbose
     ok "Brewfile installation complete"
   fi
 
-  if [[ -f "$SCRIPT_DIR./AppStore" ]] && command -v brew >/dev/null 2>&1; then
+  if [[ -f "$BREW_PKG_DIR/AppStore" ]] && command -v brew >/dev/null 2>&1; then
     if ask "Do you want to install packages from the AppStore?"; then
-      info "Installing packages from ./AppStore..."
-      run brew bundle --file="$SCRIPT_DIR./AppStore" --verbose
+      info "Installing packages from $BREW_PKG_DIR/AppStore..."
+      run brew bundle --file="$BREW_PKG_DIR/AppStore" --verbose
       ok "AppStore installation complete"
     else
       info "Skipping AppStore installation"
@@ -86,9 +87,9 @@ else
   warn "brew not available for housekeeping"
 fi
 
-if command -v brew >/dev/null 2>&1 && [[ -f "$SCRIPT_DIR/Brewfile" ]]; then
+if command -v brew >/dev/null 2>&1 && [[ -f "$BREW_PKG_DIR/Brewfile" ]]; then
   info "Verifying Brewfile..."
-  brew bundle check --file="$SCRIPT_DIR/Brewfile" || warn "Some packages are still not installed. Re-run after fixing prerequisites."
+  brew bundle check --file="$BREW_PKG_DIR/Brewfile" || warn "Some packages are still not installed. Re-run after fixing prerequisites."
 fi
 
 
