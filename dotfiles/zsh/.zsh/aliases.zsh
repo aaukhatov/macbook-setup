@@ -1,4 +1,4 @@
-alias ls="eza --group-directories-first"
+alias ls="eza --group-directories-first --icons=always"
 alias ll="eza -l --git-ignore -b --group-directories-first -l"
 alias la="eza -l -a --git-ignore -b"
 alias grep='grep --color=auto'
