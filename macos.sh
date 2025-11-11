@@ -6,19 +6,16 @@ set -euo pipefail
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
+# import functions
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/utils.sh"
+
 if sudo -n true 2>/dev/null; then
   info "sudo is already cached"
 else
   info "sudo is required, asking..."
   sudo -v
 fi
-
-# import functions
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${SCRIPT_DIR}/utils.sh"
-
-_keep_sudo $$ & SUDO_PID=$!
-trap 'kill "${SUDO_PID}" 2>/dev/null || true' EXIT
 
 # Load modular config scripts
 # Any script in macos.d/ that ends with .sh will be sourced.
