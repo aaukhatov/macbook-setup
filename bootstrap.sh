@@ -102,8 +102,15 @@ if [[ ! -d "$ZSH_HOME" ]]; then
 		run git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_HOME/plugins/zsh-syntax-highlighting"
 		run git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_HOME/plugins/zsh-autosuggestions"
 	else
-		info "Skipping Oh My Zsh installation"
+		warn "Skipping Oh My Zsh installation"
 	fi
+fi
+
+if ask "Do you want to apply macOS System Preferences?"; then
+	info "Setting macOS System Preferences"
+	run "${SCRIPT_DIR}/macos.sh"
+else
+	warn "Skipping macOS System Preferences. You can apply them later via 'macos.sh' script."
 fi
 
 if [[ ! -d "$HOME/.sdkman" ]]; then
@@ -111,7 +118,7 @@ if [[ ! -d "$HOME/.sdkman" ]]; then
 		info "Installing SDKMAN..."
 		curl -s "https://get.sdkman.io" | bash
 	else
-		info "Skipping SDKMAN installation"
+		warn "Skipping SDKMAN installation"
 	fi
 fi
 
@@ -119,7 +126,7 @@ if ask "Do you want to setup .dotfiles?"; then
 	source "${SCRIPT_DIR}/dotfiles.sh"
 	dotfiles
 else
-	info "Skipping .dotfiles setup. You can complete this part later."
+	warn "Skipping .dotfiles setup. You can complete this part later."
 fi
 
 finish

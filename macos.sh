@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -110,7 +112,7 @@ defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true
 sudo mdutil -a -i off
 
 # Apply Keyboard shortcuts
-defaults import com.apple.symbolichotkeys ./macos.d/keyboard-bindings.xml
+defaults import com.apple.symbolichotkeys "${SCRIPT_DIR}/macos.d/keyboard-bindings.xml"
 /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
 # Kill affected applications
