@@ -21,6 +21,3 @@ defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 
 # Allow the App Store to reboot machine on macOS updates
 defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
-
-# Update extensions automatically (Safari setting kept in safari.sh)
-defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true

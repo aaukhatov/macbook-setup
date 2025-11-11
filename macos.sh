@@ -124,7 +124,6 @@ for app in "Activity Monitor" \
 	"Google Chrome Canary" \
 	"Google Chrome" \
 	"Mail" \
-	"Photos" \
-	"Safari"; do
+	"Photos"; do
 	killall "${app}" &> /dev/null
 done
