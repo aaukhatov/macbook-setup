@@ -6,7 +6,12 @@ set -euo pipefail
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
-sudo -v
+if sudo -n true 2>/dev/null; then
+  info "sudo is already cached"
+else
+  info "sudo is required, asking..."
+  sudo -v
+fi
 
 # import functions
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
