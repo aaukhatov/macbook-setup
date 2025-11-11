@@ -5,20 +5,29 @@ dotfiles via GNU Stow. Keeps your macOS environment consistent across machines.
 
 ```
 macbook-setup/
-├── bootstrap.sh        # Main entry script
-├── utils.sh            # Shared functions
-├── install.sh          # Installer script
+├── bootstrap.sh        		# Main entry script
+├── utils.sh            		# Shared functions
+├── install.sh          		# Installer script
 ├── brew/
-│   ├── Brewfile        # Homebrew packages (formulas, casks, taps)
-│   ├── AppStore        # macOS App Store apps managed via `mas`
-│   └── VSCodeExtension # VS Code extensions managed via `code` CLI
-├── dotfiles.sh         # Helper to clone and link dotfiles using stow
-├── dotfiles/           # Directory with stow-managed configuration packages
-│   ├── zsh/            # .zshrc, .zshenv, .zshprofile
-│   ├── git/            # .gitconfig, .gitignore
-│   ├── vim/            # .vimrc and related files
-│   └── config/         # Misc app configs
-└── README.md           # Project documentation (you are here)
+│   ├── Brewfile        		# Homebrew packages (formulas, casks, taps)
+│   ├── AppStore        		# macOS App Store apps managed via `mas`
+│   └── VSCodeExtension 		# VS Code extensions managed via `code` CLI
+├── dotfiles.sh         		# Helper to clone and link dotfiles using stow
+├── dotfiles/           		# Directory with stow-managed configuration packages
+│   ├── zsh/            		# .zshrc, .zshenv, .zshprofile
+│   ├── git/            		# .gitconfig, .gitignore
+│   ├── vim/            		# .vimrc and related files
+│   └── config/         		# Misc app configs
+├── macos.sh         			# macOS settings
+├── macos.d/
+│   ├── activity_monitor.sh     # ActiveMonitor preferences
+│   ├── dock.sh            		# Dock preferences
+│   ├── finder.sh            	# Finder preferences
+│   ├── mail.sh            		# Default mail client preferences
+│   ├── safari.sh            	# Safari preferences
+│   ├── software_update.sh      # Software Update related settings
+│   └── keyboard-bindings.xml   # Keyboard binding customization
+└── README.md           		# Project documentation (you are here)
 ```
 
 ## Installation
