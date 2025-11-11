@@ -35,11 +35,11 @@ ask() {
   local answer
 
   while true; do
-    read -r -p "$prompt [y/N]: " answer
+    read -r -p "${RED}${BOLD}$prompt [y/N]:${RESET} " answer
     case "$answer" in
       [Yy]*) return 0 ;;  # yes → success
       [Nn]*) return 1 ;;  # no  → failure
-      *) echo "Please answer y or n." ;;
+      *) err "Please answer y or n." ;;
     esac
   done
 }
