@@ -65,9 +65,13 @@ if command -v brew >/dev/null 2>&1; then
   run brew doctor
 
   if [[ -f "$BREW_PKG_DIR/Brewfile" ]] && command -v brew >/dev/null 2>&1; then
-    info "Installing packages from $BREW_PKG_DIR/Brewfile..."
-    run brew bundle --file="$BREW_PKG_DIR/Brewfile" --verbose
-    ok "Brewfile installation complete"
+  	if ask "Do you want to install packages from the Brewfile?"; then
+			info "Installing packages from $BREW_PKG_DIR/Brewfile..."
+			run brew bundle --file="$BREW_PKG_DIR/Brewfile" --verbose
+			ok "Brewfile installation complete"
+    else
+			info "Skipping AppStore installation"
+		fi
   fi
 
   if [[ -f "$BREW_PKG_DIR/AppStore" ]] && command -v brew >/dev/null 2>&1; then
@@ -79,10 +83,6 @@ if command -v brew >/dev/null 2>&1; then
       info "Skipping AppStore installation"
     fi
   fi
-
-  # Cleanup
-  run brew cleanup
-  run brew doctor
 else
   warn "brew not available for housekeeping"
 fi
