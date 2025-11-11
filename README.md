@@ -31,13 +31,37 @@ macbook-setup/
 
 ## Installation
 
-Run following command in your terminal
+Run following command in your terminal to install from the scratch
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/aaukhatov/macbook-setup/HEAD/install.sh)"
 ```
 
 > **Tip:** Review the script before running — install.sh￼ is short and readable.
+
+### Repo is cloned
+
+If you already have cloned this repository, you can manually run
+
+```shell
+chmod +x ./boostrap.sh && ./boostrap.sh
+```
+
+If you want to apply only macOS preferences, then run following command
+
+```shell
+chmod +x ./macos.sh && ./macos.sh
+```
+
+### Granularly apply macOS System Preferences
+
+If you want to apply only Finder preferences, then run following command
+
+```shell
+chmod +x ./macos.d/finder.sh && ./macos.d/finder.sh
+```
+
+> Look at other scripts under `./macos.d` directory
 
 ## .dotfiles
 
