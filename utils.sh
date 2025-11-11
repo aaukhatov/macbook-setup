@@ -35,7 +35,7 @@ ask() {
   local answer
 
   while true; do
-    read -r -p "${RED}${BOLD}$prompt [y/N]:${RESET} " answer
+    read -r -p "${YELLOW}${BOLD}$prompt [y/N]:${RESET} " answer
     case "$answer" in
       [Yy]*) return 0 ;;  # yes → success
       [Nn]*) return 1 ;;  # no  → failure
