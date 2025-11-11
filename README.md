@@ -24,7 +24,6 @@ macbook-setup/
 │   ├── dock.sh            		# Dock preferences
 │   ├── finder.sh            	# Finder preferences
 │   ├── mail.sh            		# Default mail client preferences
-│   ├── safari.sh            	# Safari preferences
 │   ├── software_update.sh      # Software Update related settings
 │   └── keyboard-bindings.xml   # Keyboard binding customization
 └── README.md           		# Project documentation (you are here)
