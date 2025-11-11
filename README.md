@@ -61,7 +61,7 @@ If you want to apply only Finder preferences, then run following command
 chmod +x ./macos.d/finder.sh && ./macos.d/finder.sh
 ```
 
-> Look at other scripts under `./macos.d` directory
+> Check out the other scripts in the `./macos.d` directory.
 
 ## .dotfiles
 
