@@ -18,12 +18,11 @@ else
 fi
 
 # Load modular config scripts
-# Any script in macos.d/ that ends with .sh will be sourced.
 SCRIPTS_DIR="$(dirname "${BASH_SOURCE[0]}")/macos.d"
 if [ -d "${SCRIPTS_DIR}" ]; then
   for f in "${SCRIPTS_DIR}"/*.sh; do
     # shellcheck disable=SC1090
-    [ -r "$f" ] && source "$f"
+    [ -r "$f" ] && run bash "$f"
   done
 fi
 
