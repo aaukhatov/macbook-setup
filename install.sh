@@ -84,7 +84,7 @@ TARGET_DIR="${SCRIPT_DIR}/${GH_REPO}"
 
 if [[ -d "${TARGET_DIR}" ]]; then
 	warn "Existing directory found at ${TARGET_DIR}"
-	read -r -p "Do you want to remove it before re-installing? [y/N]: " confirm
+	read -r -p "${YELLOW}${BOLD}Do you want to remove it before re-installing? [y/N]:${RESET} " confirm
 	if [[ "${confirm}" =~ ^[Yy]$ ]]; then
 		info "Removing existing directory..."
 		rm -rf "${TARGET_DIR}"
