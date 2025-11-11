@@ -29,17 +29,11 @@ fi
 # Show language menu in the top right corner of the boot screen
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
-# Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "Europe/Amsterdam" > /dev/null
-
 # Enable lid wakeup
 sudo pmset -a lidwake 1
 
 # Restart automatically on power loss
 sudo pmset -a autorestart 1
-
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
 
 # Sleep the display after 15 minutes
 sudo pmset -a displaysleep 15
@@ -99,18 +93,12 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# Disable Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disable
-
 # Enable the debug menu in Disk Utility
 defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
 defaults write com.apple.DiskUtility advanced-image-options -bool true
 
 # Auto-play videos when opened with QuickTime Player
 defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true
-
-# Disable Spotlight
-sudo mdutil -a -i off
 
 # Apply Keyboard shortcuts
 defaults import com.apple.symbolichotkeys "${SCRIPT_DIR}/macos.d/keyboard-bindings.xml"
