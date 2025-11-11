@@ -108,7 +108,7 @@ fi
 
 if ask "Do you want to apply macOS System Preferences?"; then
 	info "Setting macOS System Preferences"
-	run "${SCRIPT_DIR}/macos.sh"
+	run bash "${SCRIPT_DIR}/macos.sh"
 else
 	warn "Skipping macOS System Preferences. You can apply them later via 'macos.sh' script."
 fi
