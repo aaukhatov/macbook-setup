@@ -75,7 +75,6 @@ finish() {
   printf '%s\n' " ${GREEN}${BOLD} Setup complete — enjoy, ${user_name}! 🎉🎉🎉 ${RESET}"
   printf '%s\n' " ${BLUE}────────────────────────────────────────${RESET}"
   printf '%s\n' " ${GREEN}  ✅  Your favourite tools installed!${RESET}"
-  printf '%s\n' " ${YELLOW}  • Tip: run command source ~/.zshrc or open a new terminal to load shell changes${RESET}"
   printf '%s\n' " ${BLUE}────────────────────────────────────────${RESET}"
   printf '%s\n' " ${GREEN}${BOLD} You're ready to rock 🤘 time to build something awesome 🚀 ${RESET}"
   printf '\n'
