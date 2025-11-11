@@ -44,12 +44,6 @@ ask() {
   done
 }
 
-# Ensure macOS
-if [[ "$(uname -s)" != "Darwin" ]]; then
-  err "This script is macOS-only."
-  exit 1
-fi
-
 _keep_sudo() {
   # Accept the PID of the parent process (the main script) so the background
   # refresher can detect when the script exits. We must ignore sudo errors

@@ -10,6 +10,12 @@ source "${SCRIPT_DIR}/utils.sh"
 
 info "Starting macOS setup..."
 
+# Ensure macOS
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  err "This script is macOS-only."
+  exit 1
+fi
+
 sudo -v
 
 # Start background keep-alive passing the script PID so the background job
