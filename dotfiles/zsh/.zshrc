@@ -1,3 +1,6 @@
+# Execution order
+# .zshenv → .zprofile → .zshrc → .zlogin → .zlogout
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
