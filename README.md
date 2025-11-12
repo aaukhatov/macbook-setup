@@ -1,7 +1,7 @@
 # Arturito's MacBook Setup 🐒
 
-Automates a full macOS developer setup - installing essential CLI tools, Homebrew packages, and linking personalized
-dotfiles via GNU Stow. Keeps your macOS environment consistent across machines.
+Automates almost full macOS developer setup - installing essential CLI tools, Homebrew packages, and linking personalized
+dotfiles via GNU Stow. Keeps my macOS environment consistent across machines.
 
 ```
 macbook-setup/
