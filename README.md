@@ -40,9 +40,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/aaukhatov/macbook-setup/HE
 
 > **Tip:** Review the script before running — install.sh￼ is short and readable.
 
-### Repo is cloned
-
-If you already have cloned this repository, you can manually run
+### If the repo is already cloned
 
 ```shell
 chmod +x ./boostrap.sh && ./boostrap.sh
