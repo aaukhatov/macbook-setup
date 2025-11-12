@@ -105,6 +105,8 @@ if [[ ! -d "$ZSH_HOME" ]]; then
 	if ask "Do you want to install Oh My Zsh?"; then
 		info "Oh My Zsh not found, installing..."
 		run sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+		run git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_HOME/plugins/zsh-syntax-highlighting"
+		run git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_HOME/plugins/zsh-autosuggestions"
 	else
 		warn "Skipping Oh My Zsh installation"
 	fi

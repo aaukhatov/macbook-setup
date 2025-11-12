@@ -62,7 +62,7 @@ ZSH_THEME=""
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git zsh-syntax-highlighting extract copyfile fzf)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions extract copyfile fzf)
 
 source $ZSH/oh-my-zsh.sh
 
