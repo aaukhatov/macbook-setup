@@ -16,32 +16,32 @@
 	pager = delta
 	preloadIndex = true
 [init]
-  defaultBranch = main
+	defaultBranch = main
 [commit]
-  verbose = true
+	verbose = true
 [fetch]
-  prune = true
-  pruneTags = true
-  all = true
+	prune = true
+	pruneTags = true
+	all = true
 [pull]
-  ff = only
-  rebase = true
+	ff = only
+	rebase = true
 [merge]
-  autoStash = true
+	autoStash = true
 [rebase]
-  autoStash = true
-  updateRefs = true
+	autoStash = true
+	updateRefs = true
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [tag]
 	sort = version:refname
 [diff]
 	algorithm = histogram
 [delta]
-  syntax-theme = Nord
-  line-numbers = true
+	syntax-theme = Nord
+	line-numbers = true
 [advice]
-  addEmptyPathspec = false
+	addEmptyPathspec = false
 [help]
 	autocorrect = prompt
 # [pager]
