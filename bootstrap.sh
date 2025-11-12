@@ -105,6 +105,17 @@ if [[ ! -d "$ZSH_HOME" ]]; then
 		run sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 		run git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_HOME/plugins/zsh-syntax-highlighting"
 		run git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_HOME/plugins/zsh-autosuggestions"
+		# .zshrc is managed by stow
+		if [[ -e "$HOME/.zshrc" ]]; then
+      if [[ -e "$HOME/.zshrc.bak" ]]; then
+        ts="$(date +"%Y%m%d-%H%M%S")"
+        info "~/.zshrc.bak already exists; creating timestamped backup ~/.zshrc.bak.$ts"
+        run mv -- "$HOME/.zshrc" "$HOME/.zshrc.bak.$ts"
+      else
+        info "Backing up ~/.zshrc to ~/.zshrc.bak"
+        run mv -- "$HOME/.zshrc" "$HOME/.zshrc.bak"
+      fi
+    fi
 	else
 		warn "Skipping Oh My Zsh installation"
 	fi
