@@ -1,6 +1,7 @@
 # Arturito's MacBook Setup 🐒
 
-Automates almost full macOS developer setup - installing essential CLI tools, Homebrew packages, and linking personalized
+Automates almost full macOS developer setup - installing essential CLI tools, Homebrew packages, and linking
+personalized
 dotfiles via GNU Stow. Keeps my macOS environment consistent across machines.
 
 ```
@@ -47,21 +48,40 @@ If you already have cloned this repository, you can manually run
 chmod +x ./boostrap.sh && ./boostrap.sh
 ```
 
-If you want to apply only macOS preferences, then run following command
+## What the bootstrap does (interactive)
 
-```shell
-chmod +x ./macos.sh && ./macos.sh
-```
+`bootstrap.sh` runs in a series of interactive stages. Each optional step asks for confirmation, and you can safely
+re-run the script anytime.
 
-### Granularly apply macOS System Preferences
+### Stages & Prompts (in order)
 
-If you want to apply only Finder preferences, then run following command
+1. **System checks**
+	- Ensures macOS, installs Rosetta (Apple Silicon), installs Xcode CLT if missing.
 
-```shell
-chmod +x ./macos.d/finder.sh && ./macos.d/finder.sh
-```
+2. **Homebrew setup**
+	- Installs/updates Homebrew.
+	- Optional prompt: install packages from `brew/Brewfile`.
+	- Optional prompt: install Mac App Store apps from `brew/AppStore`.
 
-> Check out the other scripts in the `./macos.d` directory.
+3. **macOS updates (optional)**
+	- Prompt: *Update macOS now?*
+
+4. **Shell environment**
+	- Prompt: install Oh My Zsh (backs up existing `.zshrc`).
+
+5. **macOS preferences**
+	- Prompt: apply default macOS settings.
+	- You can also run individual modules from `macos.d/`.
+
+6. **Developer tools**
+	- Prompt: install SDKMAN!.
+
+7. **Dotfiles**
+	- Prompt: apply dotfiles via `stow` from the `dotfiles/` directory.
+
+> **Re-running**
+> If a step was skipped or something failed (e.g., App Store sign-in), just re-run `./bootstrap.sh`. It will skip
+> completed work and re-offer the prompts.
 
 ## .dotfiles
 
