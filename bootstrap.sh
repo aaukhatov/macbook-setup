@@ -16,14 +16,12 @@ if [[ "$(uname -s)" != "Darwin" ]]; then
   exit 1
 fi
 
-sudo -v
-
-# Start background keep-alive passing the script PID so the background job
-# can detect when the main script exits and terminate itself.
-_keep_sudo $$ & SUDO_PID=$!
-trap 'kill "${SUDO_PID}" 2>/dev/null || true' EXIT
-
 if ask "Do you want to update macOS (it might take time to download and install)?"; then
+	sudo -v
+  # Start background keep-alive passing the script PID so the background job
+  # can detect when the main script exits and terminate itself.
+  _keep_sudo $$ & SUDO_PID=$!
+  trap 'kill "${SUDO_PID}" 2>/dev/null || true' EXIT
 	run sudo softwareupdate -i -a
 fi
 
