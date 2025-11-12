@@ -65,10 +65,10 @@ fi
 # if homebrew is there, continue packages installation
 BREW_PKG_DIR="$SCRIPT_DIR/brew"
 if command -v brew >/dev/null 2>&1; then
-  run brew update
-  run brew upgrade
-  run brew cleanup
-  run brew doctor
+	info "brew's housekeeping"
+	run brew update
+	run brew cleanup
+	run brew doctor
 
   if [[ -f "$BREW_PKG_DIR/Brewfile" ]] && command -v brew >/dev/null 2>&1; then
   	if ask "Do you want to install packages from the Brewfile?"; then
@@ -89,8 +89,6 @@ if command -v brew >/dev/null 2>&1; then
       info "Skipping AppStore installation"
     fi
   fi
-else
-  warn "brew not available for housekeeping"
 fi
 
 if command -v brew >/dev/null 2>&1 && [[ -f "$BREW_PKG_DIR/Brewfile" ]]; then
