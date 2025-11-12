@@ -51,35 +51,28 @@ chmod +x ./boostrap.sh && ./boostrap.sh
 `bootstrap.sh` runs in a series of interactive stages. Each optional step asks for confirmation, and you can safely
 re-run the script anytime.
 
-### Stages & Prompts (in order)
+### Stages overview
 
-1. **System checks**
-	- Ensures macOS, installs Rosetta (Apple Silicon), installs Xcode CLT if missing.
+1. **System preparation**
+   Installs Rosetta (on Apple Silicon), Xcode Command Line Tools, and performs basic macOS readiness checks.
 
-2. **Homebrew setup**
-	- Installs/updates Homebrew.
-	- Optional prompt: install packages from `brew/Brewfile`.
-	- Optional prompt: install Mac App Store apps from `brew/AppStore`.
+1. **Homebrew setup**
+	Installs or updates Homebrew and can apply package lists from the Brewfile and App Store bundle.
 
-3. **macOS updates (optional)**
-	- Prompt: *Update macOS now?*
+1. **macOS updates**
+	Performs macOS system updates.
 
-4. **Shell environment**
-	- Prompt: install Oh My Zsh (backs up existing `.zshrc`).
+1. **macOS preferences**
+   Applies your predefined macOS system settings. Individual modules in `macos.d/` can be run separately.
 
-5. **macOS preferences**
-	- Prompt: apply default macOS settings.
-	- You can also run individual modules from `macos.d/`.
+1. **Developer tools**
+   Optionally installs SDKMAN!
 
-6. **Developer tools**
-	- Prompt: install SDKMAN!.
+1. **Shell environment**
+   Offers installation of Oh My Zsh and safely manages existing shell config.
 
-7. **Dotfiles**
-	- Prompt: apply dotfiles via `stow` from the `dotfiles/` directory.
-
-> **Re-running**
-> If a step was skipped or something failed (e.g., App Store sign-in), just re-run `./bootstrap.sh`. It will skip
-> completed work and re-offer the prompts.
+1. **Dotfiles**
+   Clones this repo and uses `stow` to link your dotfiles into the home directory.
 
 ## .dotfiles
 
