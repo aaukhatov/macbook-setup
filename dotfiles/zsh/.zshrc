@@ -142,6 +142,7 @@ autoload -Uz compinit && compinit
 eval "$(zoxide init zsh)"
 
 # Starship Prompt
+# See ~/.config/starship.toml
 eval "$(starship init zsh)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
