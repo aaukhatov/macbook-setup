@@ -68,6 +68,8 @@ chmod +x ./macos.d/finder.sh && ./macos.d/finder.sh
 Dotfiles are organized as `stow` packages.
 Each folder under `dotfiles/ (e.g., zsh, git, vim)` contains the files that will be symlinked into `$HOME`.
 
+> stow commands must be run in the dotfiles directory
+
 ### dry run first (highly recommended)
 
 ```shell
