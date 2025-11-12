@@ -32,13 +32,13 @@ macbook-setup/
 
 ## Installation
 
-Run following command in your terminal to install from the scratch
+Run following command in your terminal to start installation
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/aaukhatov/macbook-setup/HEAD/install.sh)"
 ```
 
-> **Tip:** Review the script before running — install.sh￼ is short and readable.
+> **Tip:** Review the script before running - `install.sh`￼ is short and readable.
 
 ### If the repo is already cloned
 
@@ -79,7 +79,7 @@ re-run the script anytime.
 Dotfiles are organized as `stow` packages.
 Each folder under `dotfiles/ (e.g., zsh, git, vim)` contains the files that will be symlinked into `$HOME`.
 
-> stow commands must be run in the dotfiles directory
+> `stow` commands must be run in the dotfiles directory
 
 ### dry run first (highly recommended)
 
@@ -102,11 +102,11 @@ stow -v -t "$HOME" config git vim
 ### unlink a package (remove symlinks only)
 
 ```shell
-stow --target="$HOME" -D git
+stow -t "$HOME" -D git
 ```
 
 ### restow (refresh links after moving files within a package)
 
 ```shell
-stow --target="$HOME" -R vim
+stow -t "$HOME" -R vim
 ```
