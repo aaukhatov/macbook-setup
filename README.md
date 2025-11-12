@@ -48,7 +48,7 @@ If you already have cloned this repository, you can manually run
 chmod +x ./boostrap.sh && ./boostrap.sh
 ```
 
-## What the bootstrap does (interactive)
+## What the bootstrap does
 
 `bootstrap.sh` runs in a series of interactive stages. Each optional step asks for confirmation, and you can safely
 re-run the script anytime.
