@@ -40,10 +40,8 @@ activate_dotfiles() {
   }
 
   # Collect only directories (packages)
-  local packages=()
-  while IFS= read -r dir; do
-		packages+=("$dir")
-  done < <(find . -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+  # shellcheck disable=SC2296
+  local packages=("${(@f)$(print -l -- */)}")
 
   if [[ ${#packages[@]} -eq 0 ]]; then
     warn "No packages found in $dotfiles_dir."
