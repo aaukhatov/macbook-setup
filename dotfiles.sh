@@ -41,7 +41,9 @@ activate_dotfiles() {
 
   # Collect only directories (packages)
   local packages=()
-  mapfile -t packages < <(find . -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+  while IFS= read -r dir; do
+		packages+=("$dir")
+  done < <(find . -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
 
   if [[ ${#packages[@]} -eq 0 ]]; then
     warn "No packages found in $dotfiles_dir."
