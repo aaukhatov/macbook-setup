@@ -104,12 +104,13 @@ if [[ ! -d "$ZSH_HOME" ]]; then
 		info "Oh My Zsh not found, installing..."
 
 		# .zshrc is managed by stow
+		original_zshrc=""
 		if [[ -e "$HOME/.zshrc" ]]; then
 			if [[ -L "$HOME/.zshrc" ]]; then
+				original_zshrc="$(readlink "$HOME/.zshrc")"
 				# shellcheck disable=SC2088
-				warn "You have ~/.zshrc as a symlink. It's being removed due to OMZ installation."
+				warn "Found ~/.zshrc symlink -> ${original_zshrc}; will restore after OMZ installation"
 				run rm -- "$HOME/.zshrc"
-				info "Configure your ~/.zshrc file"
       else
 				if [[ -e "$HOME/.zshrc.bak" ]]; then
 					ts="$(date +"%Y%m%d-%H%M%S")"
@@ -129,7 +130,7 @@ if [[ ! -d "$ZSH_HOME" ]]; then
 		run git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_HOME/plugins/zsh-syntax-highlighting"
 		run git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_HOME/plugins/zsh-autosuggestions"
 
-		# .zshrc is managed by stow
+		# Cleanup after OMZ
 		if [[ -e "$HOME/.zshrc" ]]; then
       if [[ -e "$HOME/.zshrc.bak" ]]; then
         ts="$(date +"%Y%m%d-%H%M%S")"
@@ -140,6 +141,13 @@ if [[ ! -d "$ZSH_HOME" ]]; then
         info "Backing up ~/.zshrc to ~/.zshrc.bak"
         run mv -- "$HOME/.zshrc" "$HOME/.zshrc.bak"
       fi
+    fi
+
+    # Restore the original .zshrc if there was one
+    if [[ -n "$original_zshrc" ]]; then
+      info "Restoring original ~/.zshrc symlink -> ${original_zshrc}"
+      # Recreate the symlink
+      run ln -s -- "$original_zshrc" "$HOME/.zshrc"
     fi
 	else
 		warn "Skipping Oh My Zsh installation"
