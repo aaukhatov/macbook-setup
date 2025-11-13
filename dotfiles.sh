@@ -58,7 +58,7 @@ activate_dotfiles() {
 			stow -v -t "$HOME" "$pkg"
 			is_stowed=true
 		else
-			warn "Skipping package: $pkg"
+			info "Skipping package: $pkg"
 		fi
   done
 
