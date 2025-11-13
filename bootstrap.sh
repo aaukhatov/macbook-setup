@@ -62,6 +62,7 @@ fi
 
 # if homebrew is there, continue packages installation
 BREW_PKG_DIR="$SCRIPT_DIR/brew"
+IS_BREW_EXECUTED=false
 if command -v brew >/dev/null 2>&1; then
 	info "brew's housekeeping"
 	run brew update
@@ -73,6 +74,7 @@ if command -v brew >/dev/null 2>&1; then
 			info "Installing packages from $BREW_PKG_DIR/Brewfile..."
 			run brew bundle --file="$BREW_PKG_DIR/Brewfile" --verbose
 			ok "Brewfile installation complete"
+			IS_BREW_EXECUTED=true
     else
 			info "Skipping AppStore installation"
 		fi
@@ -89,7 +91,7 @@ if command -v brew >/dev/null 2>&1; then
   fi
 fi
 
-if command -v brew >/dev/null 2>&1 && [[ -f "$BREW_PKG_DIR/Brewfile" ]]; then
+if command -v brew >/dev/null 2>&1 && $IS_BREW_EXECUTED && [[ -f "$BREW_PKG_DIR/Brewfile" ]]; then
   info "Verifying Brewfile..."
   brew bundle check --file="$BREW_PKG_DIR/Brewfile" || warn "Some packages are still not installed. Re-run after fixing prerequisites."
 fi
