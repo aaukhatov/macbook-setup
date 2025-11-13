@@ -54,22 +54,23 @@ re-run the script anytime.
 ### Stages overview
 
 1. **System preparation**
-   Installs Rosetta (on Apple Silicon), Xcode Command Line Tools, and performs basic macOS readiness checks.
+   Installs **Rosetta** _(on Apple Silicon)_, **Xcode Command Line Tools**, and performs basic macOS readiness checks.
 
 1. **Homebrew setup**
-	Installs or updates Homebrew and can apply package lists from the Brewfile and App Store bundle.
+   Installs or updates Homebrew and can apply package lists from the `Brewfile` and `AppStore` bundles.
 
 1. **macOS updates**
-	Performs macOS system updates.
+   Performs macOS system updates.
 
 1. **macOS preferences**
    Applies your predefined macOS system settings. Individual modules in `macos.d/` can be run separately.
 
 1. **Developer tools**
-   Optionally installs SDKMAN!
+   Optionally installs **SDKMAN!**
 
 1. **Shell environment**
-   Offers installation of Oh My Zsh and safely manages existing shell config.
+   Offers installation of **Oh My Zsh** and safely manages existing shell config. It restores an existing `.zshrc` file
+   if it was a symlink after installation.
 
 1. **Dotfiles**
    Clones this repo and uses `stow` to link your dotfiles into the home directory.
