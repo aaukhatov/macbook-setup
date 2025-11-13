@@ -107,7 +107,7 @@ if [[ ! -d "$ZSH_HOME" ]]; then
 		if [[ -e "$HOME/.zshrc" ]]; then
 			if [[ -L "$HOME/.zshrc" ]]; then
 				# shellcheck disable=SC2088
-				warn "~/.zshrc is a symlink; removing it"
+				warn "You have ~/.zshrc as a symlink. It's being removed due to OMZ installation."
 				run rm -- "$HOME/.zshrc"
 				info "Configure your ~/.zshrc file"
       else
