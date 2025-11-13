@@ -135,19 +135,19 @@ if [[ ! -d "$ZSH_HOME" ]]; then
       if [[ -e "$HOME/.zshrc.bak" ]]; then
         ts="$(date +"%Y%m%d-%H%M%S")"
         # shellcheck disable=SC2088
-        info "~/.zshrc.bak already exists; creating timestamped backup ~/.zshrc.bak.$ts"
+        warn "~/.zshrc.bak already exists; creating timestamped backup ~/.zshrc.bak.$ts"
         run mv -- "$HOME/.zshrc" "$HOME/.zshrc.bak.$ts"
       else
-        info "Backing up ~/.zshrc to ~/.zshrc.bak"
+        warn "Backing up ~/.zshrc to ~/.zshrc.bak"
         run mv -- "$HOME/.zshrc" "$HOME/.zshrc.bak"
       fi
     fi
 
     # Restore the original .zshrc if there was one
     if [[ -n "$original_zshrc" ]]; then
-      info "Restoring original ~/.zshrc symlink -> ${original_zshrc}"
+      ok "Restoring original ~/.zshrc symlink -> ${original_zshrc}"
       # Recreate the symlink
-      run ln -s -- "$original_zshrc" "$HOME/.zshrc"
+      ln -s -- "$original_zshrc" "$HOME/.zshrc"
     fi
 	else
 		warn "Skipping Oh My Zsh installation"
