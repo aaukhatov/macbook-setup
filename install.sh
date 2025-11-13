@@ -13,10 +13,10 @@ else
   BOLD='' RED='' GREEN='' YELLOW='' BLUE='' RESET=''
 fi
 
-info()  { printf '%s\n' "${BLUE}${BOLD}==>${RESET} $*"; }
-warn()  { printf '%s\n' "${YELLOW}${BOLD}==>[!]${RESET} $*"; }
-err()   { printf '%s\n' "${RED}${BOLD}==>[✗]${RESET} $*" >&2; }
-ok()    { printf '%s\n' "${GREEN}${BOLD}==>[✓]${RESET} $*"; }
+info()  { printf '%s\n' "${BLUE}${BOLD}==> $*${RESET}"; }
+warn()  { printf '%s\n' "${YELLOW}${BOLD}==>[!] $*${RESET}"; }
+err()   { printf '%s\n' "${RED}${BOLD}==>[✗] $*${RESET}" >&2; }
+ok()    { printf '%s\n' "${GREEN}${BOLD}==>[✓] $*${RESET}"; }
 
 # If not running under bash (e.g. invoked via sh -c "..."), re-exec under bash reading stdin.
 if [ -z "${BASH_VERSION-}" ]; then

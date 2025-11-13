@@ -11,10 +11,10 @@ else
   BOLD='' RED='' GREEN='' YELLOW='' BLUE='' RESET=''
 fi
 
-info()  { printf '%s\n' "${BLUE}${BOLD}==>${RESET} $*"; }
-warn()  { printf '%s\n' "${YELLOW}${BOLD}==>[!]${RESET} $*"; }
-err()   { printf '%s\n' "${RED}${BOLD}==>[✗]${RESET} $*" >&2; }
-ok()    { printf '%s\n' "${GREEN}${BOLD}==>[✓]${RESET} $*"; }
+info()  { printf '%s\n' "${BLUE}${BOLD}==> $*${RESET}"; }
+warn()  { printf '%s\n' "${YELLOW}${BOLD}==>[!] $*${RESET}"; }
+err()   { printf '%s\n' "${RED}${BOLD}==>[✗] $*${RESET}" >&2; }
+ok()    { printf '%s\n' "${GREEN}${BOLD}==>[✓] $*${RESET}"; }
 
 run() {
   info "Running: $*"
