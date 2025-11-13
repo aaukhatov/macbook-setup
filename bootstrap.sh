@@ -102,6 +102,27 @@ ZSH_HOME="$HOME/.oh-my-zsh"
 if [[ ! -d "$ZSH_HOME" ]]; then
 	if ask "Do you want to install Oh My Zsh?"; then
 		info "Oh My Zsh not found, installing..."
+
+		# .zshrc is managed by stow
+		if [[ -e "$HOME/.zshrc" ]]; then
+			if [[ -L "$HOME/.zshrc" ]]; then
+				# shellcheck disable=SC2088
+				warn "~/.zshrc is a symlink; removing it"
+				run rm -- "$HOME/.zshrc"
+				info "Configure your ~/.zshrc file"
+      else
+				if [[ -e "$HOME/.zshrc.bak" ]]; then
+					ts="$(date +"%Y%m%d-%H%M%S")"
+					# shellcheck disable=SC2088
+					info "~/.zshrc.bak already exists; creating timestamped backup ~/.zshrc.bak.$ts"
+					run mv -- "$HOME/.zshrc" "$HOME/.zshrc.bak.$ts"
+				else
+					info "Backing up ~/.zshrc to ~/.zshrc.bak"
+					run mv -- "$HOME/.zshrc" "$HOME/.zshrc.bak"
+				fi
+			fi
+    fi
+
 		run sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 		# Installing OMZ Plugins
@@ -112,6 +133,7 @@ if [[ ! -d "$ZSH_HOME" ]]; then
 		if [[ -e "$HOME/.zshrc" ]]; then
       if [[ -e "$HOME/.zshrc.bak" ]]; then
         ts="$(date +"%Y%m%d-%H%M%S")"
+        # shellcheck disable=SC2088
         info "~/.zshrc.bak already exists; creating timestamped backup ~/.zshrc.bak.$ts"
         run mv -- "$HOME/.zshrc" "$HOME/.zshrc.bak.$ts"
       else
