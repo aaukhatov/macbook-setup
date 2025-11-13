@@ -46,8 +46,11 @@ activate_dotfiles() {
 
   info "Activating dotfiles from $dotfiles_dir → $HOME"
   for pkg in "${packages[@]}"; do
-    echo "   ↳ stowing package: $pkg"
-    stow -v -t "$HOME" "$pkg"
+    if ask "	↳ stowing package: $pkg"; then
+			stow -v -t "$HOME" "$pkg"
+		else
+			warn "Skipping package: $pkg"
+		fi
   done
 
   ok "Dotfiles activated successfully."
