@@ -40,8 +40,11 @@ activate_dotfiles() {
   }
 
   # Collect only directories (packages)
-  # shellcheck disable=SC2296
-  local packages=("${(@f)$(print -l -- */)}")
+  packages=()
+  for d in */; do
+    [ -d "$d" ] || continue
+    packages+=("${d%/}")
+  done
 
   if [[ ${#packages[@]} -eq 0 ]]; then
     warn "No packages found in $dotfiles_dir."
