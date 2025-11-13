@@ -23,8 +23,8 @@ dotfiles() {
 	run git clone "$repo_url" "${clone_dir}"
 
 	ok "Dotfiles cloned to ${clone_dir}/dotfiles"
-	if ask "Do you want to activate .dotfiles?"; then
-		activate_dotfiles "${clone_dir}/dotfiles"
+	if ask "Do you want to stow .dotfiles?"; then
+		stow_dotfiles "${clone_dir}/dotfiles"
 	else
 		info "${GREEN}${BOLD}Next steps to activate them:${RESET}"
 		info "  	${GREEN}${BOLD}cd ${clone_dir}/dotfiles${RESET}"
@@ -32,7 +32,7 @@ dotfiles() {
 	fi
 }
 
-activate_dotfiles() {
+stow_dotfiles() {
 	local dotfiles_dir="${1:-}"
   cd "$dotfiles_dir" || {
     err "Cannot cd into $dotfiles_dir"
@@ -51,10 +51,10 @@ activate_dotfiles() {
     return 0
   fi
 
-  info "Activating dotfiles from $dotfiles_dir → $HOME"
+  info "Stowing .dotfiles from $dotfiles_dir → $HOME"
   local is_stowed=false
   for pkg in "${packages[@]}"; do
-    if ask "	↳ stowing package: $pkg"; then
+    if ask "	 ↳ stowing package: $pkg"; then
 			stow -v -t "$HOME" "$pkg"
 			is_stowed=true
 		else
