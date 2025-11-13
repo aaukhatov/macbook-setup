@@ -93,7 +93,7 @@ fi
 
 if command -v brew >/dev/null 2>&1 && $IS_BREW_EXECUTED && [[ -f "$BREW_PKG_DIR/Brewfile" ]]; then
   info "Verifying Brewfile..."
-  brew bundle check --file="$BREW_PKG_DIR/Brewfile" || warn "Some packages are still not installed. Re-run after fixing prerequisites."
+  run brew bundle check --file="$BREW_PKG_DIR/Brewfile" || warn "Some packages are still not installed. Re-run after fixing prerequisites."
 fi
 
 
