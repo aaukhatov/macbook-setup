@@ -49,13 +49,17 @@ activate_dotfiles() {
   fi
 
   info "Activating dotfiles from $dotfiles_dir → $HOME"
+  local is_stowed=false
   for pkg in "${packages[@]}"; do
     if ask "	↳ stowing package: $pkg"; then
 			stow -v -t "$HOME" "$pkg"
+			is_stowed=true
 		else
 			warn "Skipping package: $pkg"
 		fi
   done
 
-  ok "Dotfiles activated successfully."
+	if $is_stowed; then
+  	ok "Dotfiles are stowed successfully."
+  fi
 }
