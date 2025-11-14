@@ -1,6 +1,9 @@
 # Execution order
 # .zshenv → .zprofile → .zshrc → .zlogin → .zlogout
 
+# Uncomment next line and last line of this file to measure performance
+# zmodload zsh/zprof
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -148,3 +151,6 @@ eval "$(starship init zsh)"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Uncomment for performance measurement
+# zprof
