@@ -50,8 +50,5 @@
 #	diff = diff-highlight | less
 
 # Custom configuration per projects
-# [includeIf "gitdir:~/projects/cloudally/"]
-# 	path = .gitconfig-cloudally
-
-# [includeIf "gitdir:~/projects/showroom/"]
-#   path = .gitconfig-showroom
+[includeIf "gitdir:~/rabobank/"]
+ 	path = .gitconfig-rabobank
