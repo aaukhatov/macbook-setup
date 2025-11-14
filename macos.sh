@@ -100,9 +100,10 @@ defaults write com.apple.DiskUtility advanced-image-options -bool true
 # Auto-play videos when opened with QuickTime Player
 defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true
 
-# Apply Keyboard shortcuts
-defaults import com.apple.symbolichotkeys "${SCRIPT_DIR}/macos.d/keyboard-bindings.xml"
-/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+if ask "Do you want to apply keyboard bindings?"; then
+	defaults import com.apple.symbolichotkeys "${SCRIPT_DIR}/macos.d/keyboard-bindings.xml"
+	/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+fi
 
 # Kill affected applications
 for app in "Activity Monitor" \
