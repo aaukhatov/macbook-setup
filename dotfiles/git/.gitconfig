@@ -1,14 +1,18 @@
 [user]
 	name = Artur Aukhatov
 	email = aaukhatov@gmail.com
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
 [color]
 	ui = auto
 	status = auto
 	diff = auto
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+	current = yellow ul bold
+	local = green bold
+	remote = cyan
 [core]
 	editor = vim
 	autocrlf = input
@@ -26,17 +30,28 @@
 [pull]
 	ff = only
 	rebase = true
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
 [merge]
 	autoStash = true
 [rebase]
 	autoStash = true
+	autoSquash = true
 	updateRefs = true
+	conflictStyle = zdiff3
+[checkout]
+	defaultRemote = origin
 [interactive]
 	diffFilter = delta --color-only
 [tag]
 	sort = version:refname
 [diff]
 	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [delta]
 	syntax-theme = Nord
 	line-numbers = true
@@ -44,6 +59,19 @@
 	addEmptyPathspec = false
 [help]
 	autocorrect = prompt
+[alias]
+	undo = reset --soft HEAD^
+	last = log -1 HEAD
+	l = log --pretty=custom
+	lg = log --graph --pretty=custom -20
+	st = status
+	rmf = rm -rf
+[pretty]
+    custom = "%C(blue)%h %C(green) %s %C(magenta)%(decorate:prefix=,suffix=,tag= ,pointer=  ) %n%C(cyan) %an  %C(cyan)%ar%n"
+[feature]
+    manyFiles = true
+[status]
+    submoduleSummary = true
 # [pager]
 #	log = diff-highlight | less
 #	show = diff-highlight | less
