@@ -66,6 +66,7 @@
 	lg = log --graph --pretty=custom -20
 	st = status
 	rmf = rm -rf
+	br = branch -av
 [pretty]
     custom = "%C(blue)%h %C(green) %s %C(magenta)%(decorate:prefix=,suffix=,tag= ,pointer=  ) %n%C(cyan) %an  %C(cyan)%ar%n"
 [feature]
