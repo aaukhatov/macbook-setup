@@ -8,5 +8,6 @@ export MANPAGER='less -X';
 
 METASPLOIT="/opt/metasploit-framework"
 JETBRAINS_SCRIPTS="$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+NPM_GLOBAL="$HOME/.npm-global"
 
-export PATH="$PATH:$JETBRAINS_SCRIPTS:$METASPLOIT/bin:$HOME/.local/bin"
+export PATH="$PATH:$JETBRAINS_SCRIPTS:$METASPLOIT/bin:$HOME/.local/bin:$NPM_GLOBAL/bin"
