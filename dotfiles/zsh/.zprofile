@@ -4,5 +4,3 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 if [[ -r "${HOME}/.orbstack/shell/init.zsh" ]]; then
   source "${HOME}/.orbstack/shell/init.zsh"
 fi
-
-export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
